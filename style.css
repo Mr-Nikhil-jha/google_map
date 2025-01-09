@@ -1,0 +1,193 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+}
+
+html,
+body {
+    height: 100%;
+    font-family: "Arial", sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    height: 100vh;
+    background-image: linear-gradient(30deg, rgba(0, 0, 0, 1) 0%, rgba(19, 4, 59, 1) 30%, rgba(88, 13, 231, 1) 100%);
+}
+
+/* Typing effect for the marquee text */
+.typing {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: white;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 4px solid #333; /* Cursor */
+    width: 100%; /* Initial width (hidden text) */
+
+    animation: typing 4s steps(30) 1s forwards, blink 0.75s step-end infinite;
+}
+
+/* Animation to simulate typing */
+@keyframes typing {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+/* Animation to create the blinking cursor effect */
+@keyframes blink {
+    0%,
+    50% {
+        border-color: transparent;
+    }
+    50.1%,
+    100% {
+        border-color: white;
+    }
+}
+
+#map {
+    height: 50%;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    border: 1px solid black;
+}
+
+#searchBoxDiv {
+    display: none;
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+#searchBox {
+    width: 80%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+    margin-bottom: 10px;
+}
+
+#searchBox:focus {
+    border-color: #4caf50;
+}
+
+button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#findMeButton {
+    padding: 12px 20px;
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 30px;
+    width: 80%;
+}
+
+#findMeButton:hover {
+    background-color: #1e88e5;
+}
+
+.stage {
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+.stage .rotate {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-30deg);
+}
+.stage span {
+    position: absolute;
+    border-radius: 10px;
+}
+.stage span.s1 {
+    background-color: rgb(94, 254, 255);
+    box-shadow: 0 0 5px rgba(94, 254, 255, 0.7), 0 0 10px rgba(94, 254, 255, 0.7), 0 0 20px rgba(94, 254, 255, 0.7), 0 0 30px rgba(94, 254, 255, 0.7);
+}
+.stage span.s2 {
+    background-color: rgb(255, 255, 62);
+    box-shadow: 0 0 5px rgba(255, 255, 62, 0.7), 0 0 10px rgba(255, 255, 62, 0.7), 0 0 20px rgba(255, 255, 62, 0.7), 0 0 30px rgba(255, 255, 62, 0.7);
+}
+
+@media (max-width: 768px) {
+    #map {
+        width: 22rem;
+        height: 40%;
+    }
+
+    #searchBoxDiv {
+        width: 90%;
+        /* margin-left: 58px; */
+    }
+
+    .typing {
+        width: 100%;
+        font-size: 2rem;
+        text-wrap: wrap;
+    }
+}
+
+/* Media query for desktop screens */
+@media (min-width: 769px) {
+    /* Apply typing animation only on desktop */
+    .typing {
+        animation: typing 4s steps(30) 1s forwards, blink 0.75s step-end infinite;
+    }
+}
+
+/* Media query for mobile screens */
+@media (max-width: 768px) {
+    /* Disable typing animation on mobile */
+    .typing {
+        animation: none; /* Remove animation */
+        width: auto;
+        border-right: none; /* Allow the full text to show */
+    }
+
+    .typing {
+        font-size: 2rem;
+    }
+}
